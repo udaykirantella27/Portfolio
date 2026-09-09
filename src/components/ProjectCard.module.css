@@ -1,0 +1,56 @@
+.card {
+  background-color: var(--background-color);
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.title {
+  margin-bottom: 0.5rem;
+}
+
+.title a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.title a:hover {
+  color: var(--primary-color);
+}
+
+.description {
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.techStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tech {
+  background-color: #f0f0f0;
+  color: var(--text-color);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
+
+.link {
+  color: var(--primary-color);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}

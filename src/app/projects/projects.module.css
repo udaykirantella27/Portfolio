@@ -1,0 +1,241 @@
+.pageWrapper {
+  --ink: #111111;
+  --soft-ink: #18191f;
+  --paper: #f6f1e7;
+  --paper-card: rgba(246, 241, 231, 0.04);
+  --paper-border: rgba(246, 241, 231, 0.14);
+  --muted: #a3a099;
+  --peach: #ff9271;
+  --mint: #86ebc8;
+  --lilac: #c8b9ff;
+  --sky: #8dd4ff;
+  --mono: 'Courier New', monospace;
+  --serif: Georgia, 'Times New Roman', serif;
+
+  background: var(--ink);
+  color: var(--paper);
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+.topNav {
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  background: rgba(17, 17, 17, 0.92);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--paper-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 32px;
+  height: 60px;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font: 700 11px var(--mono);
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.backLink:hover {
+  color: var(--mint);
+  transform: translateX(-3px);
+}
+
+.navTag {
+  font: 10px var(--mono);
+  color: var(--mint);
+  letter-spacing: 0.5px;
+}
+
+.mainContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 32px 120px;
+}
+
+.header {
+  margin-bottom: 64px;
+  border-bottom: 1px solid var(--paper-border);
+  padding-bottom: 40px;
+}
+
+.eyebrow {
+  font: 11px var(--mono);
+  color: var(--peach);
+  margin-bottom: 16px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5.5vw, 68px);
+  font-weight: 700;
+  line-height: 1.05;
+  margin: 0 0 20px;
+  color: var(--paper);
+}
+
+.title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--peach);
+}
+
+.intro {
+  font-size: 17px;
+  line-height: 1.6;
+  color: #cac6be;
+  max-width: 740px;
+  margin: 0;
+}
+
+.archiveGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.archiveCard {
+  background: var(--paper-card);
+  border: 1px solid var(--paper-border);
+  display: grid;
+  grid-template-columns: 80px minmax(280px, 0.9fr) 1.1fr;
+  gap: 32px;
+  padding: 32px;
+  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.archiveCard:hover {
+  border-color: var(--mint);
+  background: rgba(134, 235, 200, 0.03);
+  transform: translateY(-3px);
+}
+
+.issueIndex {
+  font: 700 12px var(--mono);
+  color: var(--peach);
+}
+
+.cardPreview {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: #191b22;
+  border: 1px solid var(--paper-border);
+  overflow: hidden;
+}
+
+.previewImg {
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.4s ease;
+}
+
+.archiveCard:hover .previewImg {
+  transform: scale(1.03);
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cardCategory {
+  font: 10px var(--mono);
+  color: var(--mint);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.cardTitle {
+  font-family: var(--serif);
+  font-size: clamp(24px, 2.4vw, 32px);
+  margin: 0 0 12px;
+  color: var(--paper);
+}
+
+.cardDesc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 0 0 18px;
+}
+
+.cardTech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 24px;
+}
+
+.techTag {
+  font: 9px var(--mono);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--paper-border);
+  padding: 4px 8px;
+  color: var(--paper);
+}
+
+.cardActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.caseStudyBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--paper);
+  color: var(--ink);
+  font: 700 11px var(--mono);
+  padding: 10px 16px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.caseStudyBtn:hover {
+  background: var(--mint);
+  transform: translateY(-2px);
+}
+
+.liveBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--paper-border);
+  color: var(--paper);
+  font: 700 11px var(--mono);
+  padding: 10px 16px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.liveBtn:hover {
+  border-color: var(--mint);
+  color: var(--mint);
+}
+
+@media (max-width: 960px) {
+  .topNav {
+    padding: 0 20px;
+  }
+  .mainContent {
+    padding: 40px 20px 80px;
+  }
+  .archiveCard {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 24px;
+  }
+}

@@ -1,0 +1,149 @@
+.experience {
+  padding: 6rem 0;
+  max-width: 1000px;
+  margin: 0 auto;
+  background: var(--card-bg);
+  border-radius: 20px;
+  margin: 2rem auto;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+
+.experience h1 {
+  font-size: 3rem;
+  margin-bottom: 4rem;
+  text-align: center;
+  color: var(--text-color);
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+}
+
+.timeline {
+  position: relative;
+  margin-left: 2rem;
+  padding-left: 2rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
+  border-radius: 3px;
+}
+
+.entry {
+  margin-bottom: 3rem;
+  padding-left: 2rem;
+  position: relative;
+  background: white;
+  border-radius: 15px;
+  padding: 2rem 2rem 2rem 3rem;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+  border-left: 4px solid var(--primary-color);
+}
+
+.entry:hover {
+  transform: translateX(10px);
+  box-shadow: var(--shadow-lg);
+}
+
+.entry::before {
+  content: '';
+  position: absolute;
+  left: -15px;
+  top: 2rem;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  border-radius: 50%;
+  border: 4px solid white;
+  box-shadow: var(--shadow);
+}
+
+.entry h2 {
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.company {
+  font-weight: 600;
+  margin: 0.5rem 0;
+  color: var(--text-color);
+  font-size: 1.125rem;
+}
+
+.period {
+  font-style: italic;
+  color: var(--muted-text);
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.responsibilities {
+  margin-top: 1rem;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.responsibilities li {
+  margin-bottom: 0.75rem;
+  padding-left: 1.5rem;
+  position: relative;
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.responsibilities li::before {
+  content: '▹';
+  position: absolute;
+  left: 0;
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .experience {
+    padding: 3rem 1rem;
+    margin: 1rem;
+    border-radius: 15px;
+  }
+
+  .experience h1 {
+    font-size: 2.25rem;
+    margin-bottom: 3rem;
+  }
+
+  .timeline {
+    margin-left: 1rem;
+    padding-left: 1rem;
+  }
+
+  .entry {
+    padding: 1.5rem 1.5rem 1.5rem 2.5rem;
+  }
+
+  .entry:hover {
+    transform: translateX(5px);
+  }
+
+  .entry::before {
+    left: -12px;
+    top: 1.5rem;
+    width: 16px;
+    height: 16px;
+  }
+
+  .entry h2 {
+    font-size: 1.5rem;
+  }
+}

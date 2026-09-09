@@ -1,0 +1,82 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Contents 4 0 R /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 5690 >>
+stream
+BT /F1 20 Tf 0.08 0.08 0.08 rg 1 0 0 1 50 790 Tm (UDAY KIRAN TELLA) Tj ET
+BT /F2 11 Tf 0.2 0.5 0.4 rg 1 0 0 1 50 772 Tm (Full Stack Developer | MERN & Next.js Specialist) Tj ET
+BT /F2 8.5 Tf 0.4 0.4 0.4 rg 1 0 0 1 50 755 Tm (Bengaluru, India  |  tellaudaykirann@gmail.com  |  linkedin.com/in/uday-kiran-tella  |  github.com/udaykirantella27) Tj ET
+0.15 0.5 0.4 RG 1.5 w 50 745 m 545 745 l S
+BT /F1 11 Tf 0.1 0.1 0.1 rg 1 0 0 1 50 725 Tm (PROFESSIONAL SUMMARY) Tj ET
+0.85 0.85 0.85 RG 0.8 w 50 720 m 545 720 l S
+BT /F2 9 Tf 0.2 0.2 0.2 rg 1 0 0 1 50 705 Tm (Full Stack Developer with hands-on experience in building responsive web applications, operational dashboards, and) Tj ET
+BT /F2 9 Tf 0.2 0.2 0.2 rg 1 0 0 1 50 693 Tm (reliable RESTful APIs. Proficient in React, Next.js, Node.js, Express, MongoDB, PostgreSQL, and modern cloud deployment.) Tj ET
+BT /F2 9 Tf 0.2 0.2 0.2 rg 1 0 0 1 50 681 Tm (Demonstrated track record in shipping live production platforms with measurable conversion and performance gains.) Tj ET
+BT /F1 11 Tf 0.1 0.1 0.1 rg 1 0 0 1 50 658 Tm (CORE TECHNICAL SKILLS) Tj ET
+0.85 0.85 0.85 RG 0.8 w 50 653 m 545 653 l S
+BT /F2 9 Tf 0.2 0.2 0.2 rg 1 0 0 1 50 638 Tm (" Frontend: React.js, Next.js 14, TypeScript, JavaScript \(ES6+\), HTML5, CSS3/CSS Modules, Tailwind CSS, Framer Motion) Tj ET
+BT /F2 9 Tf 0.2 0.2 0.2 rg 1 0 0 1 50 624 Tm (" Backend & APIs: Node.js, Express.js, RESTful Architecture, Server Actions, Middleware, JWT, RBAC Authorization) Tj ET
+BT /F2 9 Tf 0.2 0.2 0.2 rg 1 0 0 1 50 610 Tm (" Databases & Tools: MongoDB, PostgreSQL, Supabase, Git, GitHub Actions, Vercel, Vite, Postman, Jest) Tj ET
+BT /F1 11 Tf 0.1 0.1 0.1 rg 1 0 0 1 50 587 Tm (WORK EXPERIENCE) Tj ET
+0.85 0.85 0.85 RG 0.8 w 50 582 m 545 582 l S
+BT /F1 10 Tf 0.1 0.1 0.1 rg 1 0 0 1 50 567 Tm (Associate Software Developer) Tj ET
+BT /F2 9.5 Tf 0.3 0.3 0.3 rg 1 0 0 1 50 554 Tm (Zihwa Insights  Bengaluru, India) Tj ET
+BT /F2 9 Tf 0.4 0.4 0.4 rg 1 0 0 1 475 567 Tm (2024  Present) Tj ET
+BT /F2 8.5 Tf 0.25 0.25 0.25 rg 1 0 0 1 55 539 Tm (" Architected and shipped scalable commerce and CRM workflows using Next.js, Node.js, Supabase, and PostgreSQL.) Tj ET
+BT /F2 8.5 Tf 0.25 0.25 0.25 rg 1 0 0 1 55 527 Tm (" Implemented database-level Row-Level Security \(RLS\) and Role-Based Access Control \(RBAC\) across multi-tenant views.) Tj ET
+BT /F2 8.5 Tf 0.25 0.25 0.25 rg 1 0 0 1 55 515 Tm (" Optimized server-side rendered \(SSR\) endpoints, cutting median page load times and reducing server response latency by 20%.) Tj ET
+BT /F2 8.5 Tf 0.25 0.25 0.25 rg 1 0 0 1 55 503 Tm (" Collaborated across engineering and product sprints in an Agile cadence, maintaining rigorous code quality and tests.) Tj ET
+BT /F1 10 Tf 0.1 0.1 0.1 rg 1 0 0 1 50 483 Tm (Frontend Engineering Intern) Tj ET
+BT /F2 9.5 Tf 0.3 0.3 0.3 rg 1 0 0 1 50 470 Tm (Ve-Lyra Labs  Bengaluru, India) Tj ET
+BT /F2 9 Tf 0.4 0.4 0.4 rg 1 0 0 1 485 483 Tm (2023  2024) Tj ET
+BT /F2 8.5 Tf 0.25 0.25 0.25 rg 1 0 0 1 55 455 Tm (" Engineered responsive healthcare analytics dashboards and reusable UI components in React with strict WCAG compliance.) Tj ET
+BT /F2 8.5 Tf 0.25 0.25 0.25 rg 1 0 0 1 55 443 Tm (" Integrated secure REST endpoints for patient telemetry data, achieving seamless zero-CLS data visualization updates.) Tj ET
+BT /F1 11 Tf 0.1 0.1 0.1 rg 1 0 0 1 50 420 Tm (PRODUCTION PROJECTS & CASE STUDIES) Tj ET
+0.85 0.85 0.85 RG 0.8 w 50 415 m 545 415 l S
+BT /F1 9.5 Tf 0.1 0.1 0.1 rg 1 0 0 1 50 400 Tm (Stalks N Spice | Full Stack Commerce Engine) Tj ET
+BT /F2 8.5 Tf 0.4 0.4 0.4 rg 1 0 0 1 50 388 Tm (Next.js, React, Node.js, Supabase, PostgreSQL, Razorpay) Tj ET
+BT /F2 8.5 Tf 0.25 0.25 0.25 rg 1 0 0 1 55 375 Tm (" Built high-velocity e-commerce store with optimistic cart synchronization and sub-220ms edge server-rendered delivery.) Tj ET
+BT /F2 8.5 Tf 0.25 0.25 0.25 rg 1 0 0 1 55 363 Tm (" Achieved +38% completed checkout conversion and 99.9% uptime across peak promotional order periods.) Tj ET
+BT /F1 9.5 Tf 0.1 0.1 0.1 rg 1 0 0 1 50 345 Tm (Distribution Intelligence Network \(DIN\) | Enterprise Operations Portal) Tj ET
+BT /F2 8.5 Tf 0.4 0.4 0.4 rg 1 0 0 1 50 333 Tm (React, Node.js, Express, MongoDB, Redis, JWT/RBAC) Tj ET
+BT /F2 8.5 Tf 0.25 0.25 0.25 rg 1 0 0 1 55 320 Tm (" Centralized seller command console managing multi-warehouse stock, transit handoffs, and real-time ledger updates.) Tj ET
+BT /F2 8.5 Tf 0.25 0.25 0.25 rg 1 0 0 1 55 308 Tm (" Reduced inventory discrepancy rates by 62% with indexed MongoDB compound aggregations and optimistic locks.) Tj ET
+BT /F1 9.5 Tf 0.1 0.1 0.1 rg 1 0 0 1 50 290 Tm (AACP Infrastructure Systems | Corporate EPC Showcase) Tj ET
+BT /F2 8.5 Tf 0.4 0.4 0.4 rg 1 0 0 1 50 278 Tm (Next.js, TypeScript, SSR, Cloudflare CDN, Framer Motion) Tj ET
+BT /F2 8.5 Tf 0.25 0.25 0.25 rg 1 0 0 1 55 265 Tm (" Production corporate platform with 98/100 Lighthouse performance and 3.4x surge in qualified tender RFP submissions.) Tj ET
+BT /F1 11 Tf 0.1 0.1 0.1 rg 1 0 0 1 50 238 Tm (EDUCATION & CERTIFICATIONS) Tj ET
+0.85 0.85 0.85 RG 0.8 w 50 233 m 545 233 l S
+BT /F1 9.5 Tf 0.1 0.1 0.1 rg 1 0 0 1 50 218 Tm (Bachelor of Technology \(B.Tech\) in Computer Science & Engineering) Tj ET
+BT /F2 8.5 Tf 0.35 0.35 0.35 rg 1 0 0 1 50 206 Tm (Visvesvaraya Technological University \(VTU\)  |  CGPA: 8.2 / 10  |  2019  2023) Tj ET
+BT /F2 8.5 Tf 0.25 0.25 0.25 rg 1 0 0 1 50 192 Tm (" Certifications: Meta Certified Front-End Developer, MongoDB Node.js Developer, AWS Cloud Practitioner \(Foundational\)) Tj ET
+BT /F2 8 Tf 0.5 0.5 0.5 rg 1 0 0 1 175 140 Tm (Portfolio & Case Studies: https://udaykiran.dev  |  Updated Production Edition) Tj ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000257 00000 n 
+0000005998 00000 n 
+0000006073 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+6143
+%%EOF
