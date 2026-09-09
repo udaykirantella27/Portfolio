@@ -60,3 +60,4 @@ Vercel is the creators of Next.js and provides the fastest, zero-configuration g
 - [x] **Security Headers**: HSTS, nosniff, frame protection, referrer policy, and permissions policy active in `next.config.ts`.
 - [x] **Error Handling**: Custom 404 page (`src/app/not-found.tsx`) and client-side error boundary (`src/app/error.tsx`).
 - [x] **Mobile Responsiveness**: Fluid layout verified down to 320px screen widths.
+
