@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { sendContactEmail } from '@/lib/email';
 import styles from './contact.module.css';
 
 export default function Contact() {
@@ -45,13 +46,22 @@ export default function Contact() {
     }
 
     setIsSubmitting(true);
+    setSubmitMessage('Sending message...');
 
-    // Simulate form submission (since no backend)
-    setTimeout(() => {
+    const result = await sendContactEmail({
+      name: formData.name,
+      email: formData.email,
+      service: 'Direct Portfolio Message',
+      message: formData.message,
+    });
+
+    if (result.success) {
       setSubmitMessage('Thank you for your message! I\'ll get back to you soon.');
       setFormData({ name: '', email: '', message: '', honeypot: '' });
-      setIsSubmitting(false);
-    }, 1000);
+    } else {
+      setSubmitMessage(result.error || 'Failed to send message. Please try again.');
+    }
+    setIsSubmitting(false);
   };
 
   return (

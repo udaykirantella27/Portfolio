@@ -9,6 +9,7 @@ import { ArrowDownRight, ArrowUpRight, Braces, Check, ChevronLeft, ChevronRight,
 import { skillsData } from '@/data/skills';
 import { certificationsData, educationData, experienceData } from '@/data/experience';
 import { projectsData } from '@/data/projects';
+import { sendContactEmail } from '@/lib/email';
 import styles from './Portfolio.module.css';
 
 function LinkedInIcon({ size = 16 }: { size?: number }) {
@@ -29,17 +30,23 @@ function GitHubIcon({ size = 16 }: { size?: number }) {
 
 const navigation = [{ label: 'About me', href: '#about' }, { label: 'Skills', href: '#skills' }, { label: 'Projects', href: '#work' }, { label: 'Experience', href: '#experience' }, { label: 'Contact', href: '#contact' }];
 const roles = ['FULL STACK DEVELOPER', 'PRODUCT ENGINEER', 'INTERFACE BUILDER'];
-const profileTitles = ['Uday Kiran Tella', 'Full Stack Developer', 'MERN Stack Developer', 'Associate Software Developer'];
+const profileTitles = ['Uday Kiran Tella'];
 const AboutToolsScene = dynamic(() => import('./AboutToolsScene'), { ssr: false });
+const TukCosmicScene = dynamic(() => import('./TukCosmicScene'), { ssr: false });
 
 export default function Portfolio() {
   const reduceMotion = useReducedMotion();
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
+  const [headerSection, setHeaderSection] = useState('');
   const [role, setRole] = useState(0);
   const [typedTitle, setTypedTitle] = useState('');
   const [form, setForm] = useState({ name: '', email: '', message: '', service: 'Custom Website' });
-  const [status, setStatus] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submissionFeedback, setSubmissionFeedback] = useState<{
+    type: 'idle' | 'success' | 'error';
+    text: string;
+  }>({ type: 'idle', text: '' });
   const aboutRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -88,6 +95,20 @@ export default function Portfolio() {
       }
 
       setActiveSection(current);
+
+      // Detect section directly under top 64px header
+      let underHeader = '';
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 64 && rect.bottom > 0) {
+            underHeader = id;
+            break;
+          }
+        }
+      }
+      setHeaderSection(underHeader);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -113,7 +134,7 @@ export default function Portfolio() {
 
       if (!deleting && characterIndex === currentTitle.length) {
         deleting = true;
-        timer = window.setTimeout(typeTitle, 1500);
+        timer = window.setTimeout(typeTitle, 4000);
         return;
       }
 
@@ -129,16 +150,42 @@ export default function Portfolio() {
     return () => window.clearTimeout(timer);
   }, [reduceMotion]);
 
-  const submit = (event: FormEvent<HTMLFormElement>) => {
+  const submit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setStatus('Opening your mail client...');
-    const subject = encodeURIComponent(`[Freelance: ${form.service}] Project inquiry from ${form.name}`);
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
+    setSubmissionFeedback({ type: 'idle', text: '' });
+
+    const result = await sendContactEmail({
+      name: form.name,
+      email: form.email,
+      service: form.service,
+      message: form.message,
+    });
+
+    if (result.success) {
+      setSubmissionFeedback({
+        type: 'success',
+        text: 'Thank you! Your message has been sent directly to Uday Kiran. I will get back to you soon.',
+      });
+      setForm({ name: '', email: '', message: '', service: 'Custom Website' });
+    } else {
+      setSubmissionFeedback({
+        type: 'error',
+        text: result.error || 'Failed to send inquiry via EmailJS.',
+      });
+    }
+
+    setIsSubmitting(false);
+  };
+
+  const handleMailtoFallback = () => {
+    const subject = encodeURIComponent(`[Freelance: ${form.service}] Project inquiry from ${form.name || 'Client'}`);
     const body = encodeURIComponent(
       `Hi Uday,\n\nName: ${form.name}\nEmail: ${form.email}\nProject Type: ${form.service}\n\nProject Details:\n${form.message}`
     );
-    window.setTimeout(() => {
-      window.location.href = `mailto:tellaudaykirann@gmail.com?subject=${subject}&body=${body}`;
-    }, 350);
+    window.location.href = `mailto:tellaudaykirann@gmail.com?subject=${subject}&body=${body}`;
   };
 
   const moveAboutArtwork = (event: MouseEvent<HTMLElement>) => {
@@ -152,14 +199,20 @@ export default function Portfolio() {
   const activeIndex = Math.max(0, navigation.findIndex((item) => item.href.slice(1) === activeSection));
   const currentNav = navigation[activeIndex] || navigation[0];
 
-  return <div className={styles.site}>
-    <a href="#main" className={styles.skip}>Skip to content</a>
-    <header className={styles.header}>
+  const currentSectionUnderHeader = headerSection || activeSection;
+  const isLightHeader = currentSectionUnderHeader !== '' && currentSectionUnderHeader !== 'home' && currentSectionUnderHeader !== 'work';
+
+    return <div className={styles.site}>
+      <a href="#main" className={styles.skip}>Skip to content</a>
+      <header className={`${styles.header} ${isLightHeader ? styles.headerLight : ''}`}>
       <div className={styles.headerInner}>
         <a className={styles.floatingBrand} href="#home" aria-label="Uday Kiran Tella home">
           <span>TUK</span>
           <i>{typedTitle}<b aria-hidden="true" /></i>
         </a>
+
+
+
         <div className={styles.headerRight}>
           <a href="/Uday_Kiran_Tella_Resume_MSD.pdf" target="_blank" rel="noreferrer" className={styles.headerResumeBtn} aria-label="Download Resume PDF">
             <Download size={14} />
@@ -219,7 +272,12 @@ export default function Portfolio() {
     {menuOpen && <div className={styles.mobileMenu}><button type="button" onClick={() => setMenuOpen(false)} aria-label="Close navigation"><X size={22} /></button>{navigation.map((item, index) => <a key={item.href} href={item.href} onClick={() => setMenuOpen(false)}><i>0{index + 1}</i>{item.label}<ArrowUpRight /></a>)}</div>}
 
     <main id="main">
-      <section id="home" className={styles.hero}><div className={styles.heroGrid} aria-hidden="true" /><div className={styles.heroContent}><motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .6 }}><p className={styles.eyebrow}> ABOUT ME / AVAILABLE FOR PRODUCT TEAMS</p><h1>Uday Kiran<br /><em>Tella</em></h1><div className={styles.roleLine}><Braces size={18} /><motion.span key={roles[role]} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .25 }}>{roles[role]}</motion.span></div><p className={styles.lead}>Full Stack Developer with hands-on experience building responsive web applications, operational dashboards, and reliable APIs using React, Next.js, Node.js, Express, MongoDB, and PostgreSQL.</p><div className={styles.heroActions}><a href="#work">View live projects <ArrowDownRight size={18} /></a><a href="/Uday_Kiran_Tella_Resume_MSD.pdf" target="_blank" rel="noreferrer">Download resume <Download size={17} /></a></div></motion.div><dl className={styles.heroStats}><div><dt>1+</dt><dd>Years building products</dd></div><div><dt>5</dt><dd>Live applications shipped</dd></div><div><dt>20%</dt><dd>API performance improvement</dd></div></dl></div><aside className={styles.codeStage} aria-label="Developer workflow illustration"><div className={styles.stageHeader}><span /><span /><span /><b>uday-kiran/portfolio</b></div><div className={styles.stageCode}><p><i>01</i> <b>const</b> developer = {`{`}</p><p><i>02</i> &nbsp;name: <em>&apos;Uday Kiran Tella&apos;</em>,</p><p><i>03</i> &nbsp;focus: <em>&apos;useful products&apos;</em>,</p><p><i>04</i> &nbsp;stack: [<em>&apos;React&apos;</em>, <em>&apos;Node&apos;</em>]</p><p><i>05</i> {`}`};</p></div><div className={styles.stageOutput}><span>DEPLOYMENT STATUS</span><b>Ready to contribute</b><i>● Open to opportunities</i></div></aside></section>
+      <section id="home" className={styles.hero}>
+        <div className={styles.heroScene} aria-hidden="true">
+          <TukCosmicScene />
+        </div>
+        <div className={styles.heroGrid} aria-hidden="true" />
+        <div className={styles.heroContent}><motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .6 }}><p className={styles.eyebrow}> ABOUT ME / AVAILABLE FOR PRODUCT TEAMS</p><h1>Uday Kiran<br /><em>Tella</em></h1><div className={styles.roleLine}><Braces size={18} /><motion.span key={roles[role]} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .25 }}>{roles[role]}</motion.span></div><p className={styles.lead}>Full Stack Developer with hands-on experience building responsive web applications, operational dashboards, and reliable APIs using React, Next.js, Node.js, Express, MongoDB, and PostgreSQL.</p><div className={styles.heroActions}><a href="#work">View live projects <ArrowDownRight size={18} /></a><a href="/Uday_Kiran_Tella_Resume_MSD.pdf" target="_blank" rel="noreferrer">Download resume <Download size={17} /></a></div></motion.div><dl className={styles.heroStats}><div><dt>1+</dt><dd>Years building products</dd></div><div><dt>5</dt><dd>Live applications shipped</dd></div><div><dt>20%</dt><dd>API performance improvement</dd></div></dl></div><aside className={styles.codeStage} aria-label="Developer workflow illustration"><div className={styles.stageHeader}><span /><span /><span /><b>uday-kiran/portfolio</b></div><div className={styles.stageCode}><p><i>01</i> <b>const</b> developer = {`{`}</p><p><i>02</i> &nbsp;name: <em>&apos;Uday Kiran Tella&apos;</em>,</p><p><i>03</i> &nbsp;focus: <em>&apos;useful products&apos;</em>,</p><p><i>04</i> &nbsp;stack: [<em>&apos;React&apos;</em>, <em>&apos;Node&apos;</em>]</p><p><i>05</i> {`}`};</p></div><div className={styles.stageOutput}><span>DEPLOYMENT STATUS</span><b>Ready to contribute</b><i>● Open to opportunities</i></div></aside></section>
 
       <section id="about" ref={aboutRef} className={styles.about} onMouseMove={moveAboutArtwork} onMouseLeave={() => { aboutRef.current?.style.setProperty('--about-x', '0'); aboutRef.current?.style.setProperty('--about-y', '0'); }}><div className={styles.aboutScene} aria-hidden="true"><AboutToolsScene /></div><div className={styles.aboutDepth} aria-hidden="true"><i /><i /><i /></div><div className={styles.sectionIntro}><p>01 / ABOUT ME</p><h2>A developer who<br />keeps the product<br /><em>and the people</em><br />in view.</h2></div><div className={styles.aboutCopy}><p>I build end-to-end web experiences with a practical product mindset. That means translating requirements into clean interfaces, dependable APIs, and data flows that help teams move faster.</p><p>I am currently an Associate Software Developer at Zihwa Insights, where I work on CRM and commerce workflows. I care about readable code, fast user experiences, and shipping work that holds up in production.</p><div>{['React + Next.js interfaces', 'Node.js + Express APIs', 'MongoDB + PostgreSQL data', 'Role-based business tools'].map((item, index) => <span key={item}>0{index + 1} / {item}</span>)}</div></div></section>
 
@@ -305,10 +363,32 @@ export default function Portfolio() {
             How can I help?
             <textarea required rows={4} value={form.message} onChange={(event) => setForm({ ...form, message: event.target.value })} placeholder="Tell me about your website, app, timeline, or requirements..." />
           </label>
-          <button type="submit">
-            Send project inquiry <Send size={17} />
+          <button type="submit" disabled={isSubmitting}>
+            {isSubmitting ? (
+              'Sending inquiry...'
+            ) : (
+              <>
+                Send project inquiry <Send size={17} />
+              </>
+            )}
           </button>
-          {status && <p role="status">{status}</p>}
+          {submissionFeedback.type === 'success' && (
+            <p className={styles.contactStatusSuccess} role="status">
+              {submissionFeedback.text}
+            </p>
+          )}
+          {submissionFeedback.type === 'error' && (
+            <div className={styles.contactStatusError} role="alert">
+              <p>{submissionFeedback.text}</p>
+              <button
+                type="button"
+                className={styles.contactFallbackLink}
+                onClick={handleMailtoFallback}
+              >
+                Click here to send directly via your email app &rarr;
+              </button>
+            </div>
+          )}
         </form>
       </section>
     </main>

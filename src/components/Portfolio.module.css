@@ -32,8 +32,14 @@
 .contactForm input:focus, .contactForm textarea:focus { box-shadow: 0 0 0 3px rgba(255,255,255,.6); }
 .contactForm textarea { resize: vertical; }
 .contactForm button { align-items: center; background: #1c1717; border: 1px solid #1c1717; color: var(--paper); display: flex; font: 700 11px var(--mono); gap: 8px; height: 46px; justify-content: center; transition: transform .2s ease; cursor: pointer; }
-.contactForm button:hover { transform: translateY(-3px); }
+.contactForm button:hover:not(:disabled) { transform: translateY(-3px); }
+.contactForm button:disabled { opacity: 0.65; cursor: not-allowed; transform: none; }
 .contactForm > p { font: 10px var(--mono); margin: 0; }
+.contactStatusSuccess { background: rgba(16, 120, 60, 0.12); border-left: 3px solid #0f763e; color: #0b582d; font: 11px var(--mono); line-height: 1.4; margin: 0; padding: 10px 14px; }
+.contactStatusError { background: rgba(185, 28, 28, 0.1); border-left: 3px solid #b91c1c; color: #881313; display: flex; flex-direction: column; gap: 6px; font: 11px var(--mono); line-height: 1.4; margin: 0; padding: 10px 14px; }
+.contactStatusError p { margin: 0; }
+.contactFallbackLink { align-self: flex-start; background: none; border: none; color: #1c1717; cursor: pointer; font: 700 11px var(--mono); padding: 0; text-decoration: underline; }
+.contactFallbackLink:hover { color: #881313; }
 .footer { align-items: center; background: #141418; border-top: 1px solid rgba(255, 255, 255, 0.08); color: #c8c2b9; display: flex; flex-wrap: wrap; font: 10px var(--mono); gap: 16px; justify-content: space-between; padding: 24px 32px; position: relative; z-index: 10; }
 .footerBrand { align-items: center; display: flex; gap: 8px; }
 .footerDivider { color: var(--peach); opacity: 0.6; }
@@ -45,7 +51,7 @@
 .footerBackToTop:hover { color: var(--paper); transform: translateY(-2px); }
 @keyframes cursor { 50% { opacity: 0; } }
 @media (max-width: 920px) { .nav { padding: 0 20px; }.navLinks { display: none; }.navActions { min-width: auto; }.navActions button { align-items: center; display: inline-flex; justify-content: center; }.journey { height: 360vh; }.storyPanel { padding-left: 40px; padding-right: 40px; }.eraPanel { padding-left: 52%; }.eraTwo { padding-left: 40px; }.lab, .projects, .credentials, .contact { padding: 105px 32px; }.workbench, .contact { grid-template-columns: 1fr; }.codeWindow { max-width: 650px; }.project { grid-template-columns: 42px minmax(230px, .8fr) minmax(260px, 1fr); }.contact { gap: 60px; } }
-@media (max-width: 620px) { .servicesGrid { grid-template-columns: 1fr; } .header { background: rgba(17,17,17,.9); }.nav { height: 58px; padding: 0 16px; }.brand { min-width: 0; }.brand i { display: none; }.navActions a { font-size: 0; padding: 0; width: 36px; }.navActions a svg { height: 16px; width: 16px; }.journey { height: 340vh; }.ambient { display: none; }.storyPanel { padding: 80px 22px 35px; }.introPanel h1 { font-size: clamp(51px, 15vw, 76px); }.lead { font-size: 15px; max-width: 320px; }.scrollCue { bottom: 24px; left: 22px; }.scrollCue span { width: 50px; }.eraPanel { align-items: flex-start; padding-left: 22px; }.eraOne { justify-content: flex-end; padding-bottom: 17vh; }.eraTwo { justify-content: center; }.eraThree { justify-content: flex-start; padding-top: 21vh; }.eraPanel h2 { font-size: clamp(42px, 13vw, 62px); }.eraPanel > p:last-child { font-size: 14px; max-width: 290px; }.heroActions { flex-direction: column; align-items: flex-start; }.lab, .projects, .credentials, .contact { padding: 84px 20px; }.sectionIntro h2, .contact h2 { font-size: clamp(42px, 13vw, 64px); }.workbench { gap: 46px; margin-top: 55px; }.codeWindow { box-shadow: 11px 11px 0 #d7c7af; transform: none; }.codeWindow pre { padding: 25px 15px; }.skillOrbit { grid-template-columns: 1fr; }.skillGroup { min-height: auto; }.skillGroup h3 { margin-top: 22px; }.projectList { margin-top: 55px; }.project { gap: 18px; grid-template-columns: 34px 1fr; padding: 28px 0; }.projectVisual { grid-column: 2; min-height: 190px; }.projectCopy { grid-column: 2; }.projectCopy h3 { font-size: 34px; }.experience { grid-template-columns: 1fr; margin-top: 52px; }.experience h3 { margin-top: 26px; }.education { display: flex; flex-direction: column; gap: 9px; margin-top: 52px; }.education p { margin: 0; }.education div { margin-top: 9px; }.contactCopy > span { font-size: 15px; }.footer { align-items: flex-start; flex-direction: column; gap: 11px; padding: 22px 20px; } }
+@media (max-width: 620px) { .servicesGrid { grid-template-columns: 1fr; } .header { background: transparent; }.nav { height: 58px; padding: 0 16px; }.brand { min-width: 0; }.brand i { display: none; }.navActions a { font-size: 0; padding: 0; width: 36px; }.navActions a svg { height: 16px; width: 16px; }.journey { height: 340vh; }.ambient { display: none; }.storyPanel { padding: 80px 22px 35px; }.introPanel h1 { font-size: clamp(51px, 15vw, 76px); }.lead { font-size: 15px; max-width: 320px; }.scrollCue { bottom: 24px; left: 22px; }.scrollCue span { width: 50px; }.eraPanel { align-items: flex-start; padding-left: 22px; }.eraOne { justify-content: flex-end; padding-bottom: 17vh; }.eraTwo { justify-content: center; }.eraThree { justify-content: flex-start; padding-top: 21vh; }.eraPanel h2 { font-size: clamp(42px, 13vw, 62px); }.eraPanel > p:last-child { font-size: 14px; max-width: 290px; }.heroActions { flex-direction: column; align-items: flex-start; }.lab, .projects, .credentials, .contact { padding: 84px 20px; }.sectionIntro h2, .contact h2 { font-size: clamp(42px, 13vw, 64px); }.workbench { gap: 46px; margin-top: 55px; }.codeWindow { box-shadow: 11px 11px 0 #d7c7af; transform: none; }.codeWindow pre { padding: 25px 15px; }.skillOrbit { grid-template-columns: 1fr; }.skillGroup { min-height: auto; }.skillGroup h3 { margin-top: 22px; }.projectList { margin-top: 55px; }.project { gap: 18px; grid-template-columns: 34px 1fr; padding: 28px 0; }.projectVisual { grid-column: 2; min-height: 190px; }.projectCopy { grid-column: 2; }.projectCopy h3 { font-size: 34px; }.experience { grid-template-columns: 1fr; margin-top: 52px; }.experience h3 { margin-top: 26px; }.education { display: flex; flex-direction: column; gap: 9px; margin-top: 52px; }.education p { margin: 0; }.education div { margin-top: 9px; }.contactCopy > span { font-size: 15px; }.footer { align-items: flex-start; flex-direction: column; gap: 11px; padding: 22px 20px; } }
 @media (prefers-reduced-motion: reduce) { .terminalLine span { animation: none; } .skillGroup:hover, .heroActions a:hover, .contact button:hover { transform: none; } }
 
 .boot { align-items: center; background: #090a10; color: var(--paper); display: flex; inset: 0; justify-content: center; position: fixed; z-index: 300; }.boot > div { border-left: 1px solid var(--mint); display: flex; flex-direction: column; gap: 12px; padding: 18px 22px; width: min(470px, calc(100% - 48px)); }.boot p, .boot b, .boot small { font: 11px var(--mono); margin: 0; }.boot p { color: var(--mint); }.boot b { color: var(--paper); font-weight: 400; }.boot small { color: var(--muted); }.boot > div > span { background: rgba(255,255,255,.12); display: block; height: 3px; overflow: hidden; }.boot > div > span i { background: var(--peach); display: block; height: 100%; transform-origin: left; width: 100%; }
@@ -56,14 +62,13 @@
 /* Recruiter-first reset: clear hierarchy with a restrained, code-led visual language. */
 .header {
   align-items: center;
-  background: rgba(17, 17, 17, 0.95);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--line);
+  background: transparent;
+  border-bottom: none;
+  box-shadow: none;
   display: flex;
   height: 64px;
   left: 0;
-  pointer-events: auto;
+  pointer-events: none;
   position: fixed;
   right: 0;
   top: 0;
@@ -79,6 +84,7 @@
   max-width: 1440px;
   padding: 0 32px;
   width: 100%;
+  pointer-events: none;
 }
 
 .floatingBrand {
@@ -89,19 +95,22 @@
   gap: 12px;
   text-decoration: none;
   cursor: pointer;
+  pointer-events: auto;
 }
 .floatingBrand span {
   color: var(--paper);
   font: 800 20px/1 var(--mono);
   letter-spacing: 0;
+  transition: color 0.3s ease;
 }
 .floatingBrand i {
-  border-left: 1px solid var(--line);
+  border-left: none;
   color: var(--mint);
   font: 600 clamp(11px, 1.05vw, 13px)/1 var(--mono);
   font-style: normal;
-  padding-left: 12px;
+  padding-left: 0;
   white-space: nowrap;
+  transition: color 0.3s ease;
 }
 .floatingBrand i b {
   animation: cursor 1s steps(2) infinite;
@@ -111,6 +120,30 @@
   margin-left: 5px;
   vertical-align: middle;
   width: 5px;
+  transition: background 0.3s ease;
+}
+
+/* 3D Cosmic Particle Galaxy Scene in Hero Background */
+.heroScene {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  pointer-events: auto;
+  z-index: 0;
+  overflow: hidden;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+}
+
+.heroScene:active {
+  cursor: grabbing;
+}
+
+.heroScene canvas {
+  display: block;
+  height: 100% !important;
+  width: 100% !important;
 }
 
 /* Hero Section */
@@ -162,6 +195,8 @@
   max-width: 720px;
   position: relative;
   z-index: 1;
+  z-index: 2;
+  pointer-events: auto;
 }
 
 .hero h1 {
@@ -219,6 +254,8 @@
   position: relative;
   transform: rotate(2.2deg);
   z-index: 1;
+  z-index: 2;
+  pointer-events: auto;
 }
 
 .stageHeader {
@@ -372,7 +409,14 @@
 @media (max-width: 620px) {
   .floatingBrand { gap: 8px; }
   .floatingBrand span { font-size: 18px; }
-  .floatingBrand i { display: none; }
+  .floatingBrand i {
+    display: inline-block;
+    font-size: 11px;
+    max-width: 170px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
   .about {
     display: flex;
     flex-direction: column;
@@ -405,15 +449,14 @@
   align-items: center;
   display: flex;
   gap: 10px;
+  pointer-events: auto;
 }
 
 .headerResumeBtn {
   align-items: center;
-  background: rgba(17, 17, 17, 0.92);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(134, 235, 200, 0.4);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  background: transparent;
+  border: 1px solid rgba(134, 235, 200, 0.5);
+  box-shadow: none;
   color: var(--paper);
   display: flex;
   font: 700 11px/1 var(--mono);
@@ -422,13 +465,14 @@
   min-height: 42px;
   padding: 0 16px;
   text-decoration: none;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: auto;
 }
 
 .headerResumeBtn:hover {
   background: var(--mint);
   border-color: var(--mint);
-  box-shadow: 0 0 20px rgba(134, 235, 200, 0.45);
+  box-shadow: 0 0 16px rgba(134, 235, 200, 0.35);
   color: var(--ink);
   transform: translateY(-2px);
 }
@@ -440,13 +484,47 @@
 
 .menuToggle {
   align-items: center;
-  background: rgba(17, 17, 17, 0.9);
-  border: 1px solid var(--line);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
   color: var(--paper);
   display: none;
   height: 42px;
   justify-content: center;
   width: 42px;
+  pointer-events: auto;
+}
+
+/* Dynamic header theme when hovering/scrolling over light sections (About, Skills, Experience, Contact) */
+.headerLight .floatingBrand span {
+  color: #111111 !important;
+  font-weight: 800 !important;
+}
+.headerLight .floatingBrand i {
+  color: #0b582d !important;
+  font-weight: 700 !important;
+}
+.headerLight .floatingBrand i b {
+  background: #0b582d !important;
+}
+.headerLight .headerResumeBtn {
+  background: rgba(246, 241, 231, 0.7) !important;
+  border: 1.5px solid #111111 !important;
+  color: #111111 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+}
+.headerLight .headerResumeBtn:hover {
+  background: #111111 !important;
+  border-color: #111111 !important;
+  color: #f6f1e7 !important;
+}
+.headerLight .headerResumeBtn .pulseDot {
+  background: #0b582d !important;
+  box-shadow: 0 0 8px rgba(11, 88, 45, 0.8) !important;
+}
+.headerLight .menuToggle {
+  background: rgba(246, 241, 231, 0.7) !important;
+  border: 1.5px solid #111111 !important;
+  color: #111111 !important;
 }
 
 .pulseDot {
@@ -668,7 +746,12 @@
     font-size: 18px;
   }
   .floatingBrand i {
-    display: none;
+    display: inline-block;
+    font-size: 11px;
+    max-width: 170px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   .headerResumeBtn {
     height: 36px;
