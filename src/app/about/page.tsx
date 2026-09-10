@@ -34,7 +34,7 @@ export default function About() {
             open‑source, and taking part in coding challenges to keep my skills sharp.
           </p>
           <div className={styles.actions}>
-            <a href="/Uday_Kiran_Tella_Resume_MSD.pdf" target="_blank" className="primaryButton">
+            <a href="/Uday_Kiran_Tella_Resume_____.pdf" target="_blank" className="primaryButton">
               Download Resume
             </a>
           </div>

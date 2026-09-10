@@ -15,7 +15,7 @@ export default function Resume() {
         <h1>My Resume</h1>
 
         <div className={styles.download}>
-          <Link href="/resume.pdf" target="_blank" className={styles.downloadButton}>
+          <Link href="/Uday_Kiran_Tella_Resume_____.pdf" target="_blank" className={styles.downloadButton}>
             Download PDF Resume
           </Link>
         </div>
